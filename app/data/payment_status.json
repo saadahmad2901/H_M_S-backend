@@ -1,0 +1,14 @@
+[
+  {
+    "value": "Paid",
+    "label": "Paid"
+  },
+  {
+    "value": "Unpaid",
+    "label": "Unpaid"
+  },
+  {
+    "value": "Partial",
+    "label": "Partial"
+  }
+]

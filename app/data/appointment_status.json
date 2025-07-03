@@ -1,0 +1,18 @@
+[
+  {
+    "value": "Pending",
+    "label": "Pending"
+  },
+  {
+    "value": "Confirmed",
+    "label": "Confirmed"
+  },
+  {
+    "value": "Cancelled",
+    "label": "Cancelled"
+  },
+  {
+    "value": "Completed",
+    "label": "Completed"
+  }
+]

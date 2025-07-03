@@ -1,0 +1,10 @@
+[
+  { "value": "English", "label": "English" },
+  { "value": "Urdu", "label": "Urdu" },
+  { "value": "Punjabi", "label": "Punjabi" },
+  { "value": "Sindhi", "label": "Sindhi" },
+  { "value": "Pashto", "label": "Pashto" },
+  { "value": "Balochi", "label": "Balochi" },
+  { "value": "Saraiki", "label": "Saraiki" },
+  { "value": "Other", "label": "Other" }
+]

@@ -1,0 +1,130 @@
+[
+  {
+    "name": "Cardiology",
+    "description": "Heart and cardiovascular system care"
+  },
+  {
+    "name": "Neurology",
+    "description": "Brain, spinal cord, and nervous system"
+  },
+  {
+    "name": "Orthopedics",
+    "description": "Bones, joints, ligaments, and muscles"
+  },
+  {
+    "name": "Pediatrics",
+    "description": "Health care for infants, children, and adolescents"
+  },
+  {
+    "name": "Obstetrics and Gynecology",
+    "description": "Women's reproductive health and childbirth"
+  },
+  {
+    "name": "Dermatology",
+    "description": "Skin, hair, and nail care"
+  },
+  {
+    "name": "Psychiatry",
+    "description": "Mental health and emotional disorders"
+  },
+  {
+    "name": "Radiology",
+    "description": "Medical imaging and diagnostics"
+  },
+  {
+    "name": "Anesthesiology",
+    "description": "Pain relief and anesthesia during surgery"
+  },
+  {
+    "name": "General Surgery",
+    "description": "Surgical treatments for general health conditions"
+  },
+  {
+    "name": "Urology",
+    "description": "Urinary tract and male reproductive organs"
+  },
+  {
+    "name": "Nephrology",
+    "description": "Kidney-related disorders"
+  },
+  {
+    "name": "Gastroenterology",
+    "description": "Digestive system and liver diseases"
+  },
+  {
+    "name": "Endocrinology",
+    "description": "Hormonal and metabolic disorders"
+  },
+  {
+    "name": "Pulmonology",
+    "description": "Lung and respiratory conditions"
+  },
+  {
+    "name": "Hematology",
+    "description": "Blood and bone marrow diseases"
+  },
+  {
+    "name": "Oncology",
+    "description": "Cancer diagnosis and treatment"
+  },
+  {
+    "name": "Ophthalmology",
+    "description": "Eye and vision care"
+  },
+  {
+    "name": "Otolaryngology (ENT)",
+    "description": "Ear, nose, and throat care"
+  },
+  {
+    "name": "Rheumatology",
+    "description": "Joints, soft tissues, and autoimmune disorders"
+  },
+  {
+    "name": "Immunology",
+    "description": "Immune system and allergies"
+  },
+  {
+    "name": "Infectious Diseases",
+    "description": "Bacterial, viral, and parasitic infections"
+  },
+  {
+    "name": "Physical Medicine & Rehabilitation",
+    "description": "Restoration of physical function"
+  },
+  {
+    "name": "Internal Medicine",
+    "description": "Adult comprehensive and preventive care"
+  },
+  {
+    "name": "Emergency Medicine",
+    "description": "Urgent and emergency care"
+  },
+  {
+    "name": "Family Medicine",
+    "description": "Holistic and continuous care for individuals and families"
+  },
+  {
+    "name": "Pathology",
+    "description": "Lab testing and disease diagnosis"
+  },
+  {
+    "name": "Dentistry",
+    "description": "Teeth and oral health"
+  },
+  {
+    "name": "Nutrition and Dietetics",
+    "description": "Diet planning and nutritional support"
+  },
+  {
+    "name": "Geriatrics",
+    "description": "Healthcare for elderly patients"
+  },
+  {
+    "name": "Genetics",
+    "description": "Genetic conditions and counseling"
+  },
+  {
+    "name": "Plastic Surgery",
+    "description": "Reconstructive and cosmetic surgery"
+  }
+]

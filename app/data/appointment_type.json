@@ -1,0 +1,18 @@
+[
+    {
+        "value": "New",
+        "label": "New"
+    },
+    {
+        "value": "Follow-up",
+        "label": "Follow Up"
+    },
+    {
+        "value": "Online",
+        "label": "Online"
+    },
+    {
+        "value": "Emergency",
+        "label": "Emergency"
+    }
+]

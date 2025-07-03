@@ -1,0 +1,26 @@
+[
+  {
+    "value": "Web",
+    "label": "Web"
+  },
+  {
+    "value": "Mobile",
+    "label": "Mobile"
+  },
+  {
+    "value": "Walk-In",
+    "label": "Walk-In"
+  },
+  {
+    "value": "Call",
+    "label": "Call"
+  },
+  {
+    "value": "WA-Bot",
+    "label": "WA-Bot"
+  },
+  {
+    "value": "IG-Bot",
+    "label": "IG-Bot"
+  }
+]

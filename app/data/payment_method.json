@@ -1,0 +1,18 @@
+[
+  {
+    "value": "Cash",
+    "label": "Cash"
+  },
+  {
+    "value": "Online",
+    "label": "Online"
+  },
+  {
+    "value": "Card",
+    "label": "Card"
+  },
+  {
+    "value": "Insurance",
+    "label": "Insurance"
+  }
+]

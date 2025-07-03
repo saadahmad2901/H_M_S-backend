@@ -1,0 +1,14 @@
+<<<<<<< HEAD
+__pycache__
+.venv/
+=======
+# Byte-compiled / optimized / DLL files
+__pycache__/
+.idea/
+.vscode/
+.pytest_cache/
+.env
+.env
+storage/
+deploy.sh
+>>>>>>> a5aea33ea85a6a57d40609b3a378b30645466fed
