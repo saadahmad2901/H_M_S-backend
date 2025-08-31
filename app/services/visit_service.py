@@ -1,18 +1,20 @@
 from app.db import get_db
 
 from sqlalchemy.orm import Session
-from sqlalchemy import desc
+from sqlalchemy import desc, false
 from fastapi import Depends,HTTPException
 from typing import List,Optional
 from app import schemas
 from app import models
+from app.models import visit_service
+
 
 def create_visit_service(visit_service: schemas.VisitServiceCreate, db: Session = Depends(get_db)) -> schemas.VisitService:
     # Check if the combination already exists
     existing = db.query(models.VisitService).filter_by(
         visit_id=visit_service.visit_id,
         service_id=visit_service.service_id
-    ).first()
+    ).filter(models.VisitService.is_paid==False).first()
 
     if existing:
         # Update existing quantity
@@ -31,17 +33,27 @@ def create_visit_service(visit_service: schemas.VisitServiceCreate, db: Session 
         return db_visit_service
 
 
+
 def get_visit_services(
     visit_id: Optional[int] = None,
+    paid_status: Optional[str] = None,
+    bill_no: Optional[str] = None,
     db: Session = Depends(get_db)
 ) -> List[schemas.VisitService]:
-    results = db.query(models.VisitService, models.Services.name.label("service_name")) \
-        .join(models.Services, models.VisitService.service_id == models.Services.id) \
-        .filter(models.VisitService.visit_id == visit_id) \
-        .order_by(desc(models.VisitService.id)) \
-        .all()
+    query = db.query(models.VisitService, models.Services.name.label("service_name")) \
+        .join(models.Services, models.VisitService.service_id == models.Services.id)
 
-    # Convert result tuples to a list of VisitService schema-compatible dicts
+    if visit_id is not None:
+        query = query.filter(models.VisitService.visit_id == visit_id)
+
+    if paid_status is not None:
+        query = query.filter(models.VisitService.is_paid == paid_status)
+
+    if bill_no:
+        query = query.filter(models.VisitService.purchased_billed_id == bill_no)
+
+    results = query.order_by(desc(models.VisitService.id)).all()
+
     return [
         {
             **visit_service.__dict__,
@@ -72,3 +84,27 @@ def delete_visit_service(id:int,db:Session = Depends(get_db))->bool:
     db.delete(db_visit_service)
     db.commit()
     return True
+def update_isbilled_billno(
+    visit_id: int,
+    update_schema: schemas.UpdateUserVisitServiceBillNo,
+    db: Session
+) -> List[schemas.UpdateUserVisitServiceBillNo]:
+    records = db.query(models.VisitService).filter(
+        models.VisitService.visit_id == visit_id,
+        models.VisitService.is_paid == False
+    ).all()
+    print(records)
+    print(visit_id)
+
+    if not records:
+        raise HTTPException(status_code=404, detail="No unpaid visit services found.")
+
+    for record in records:
+        for key, value in update_schema.dict(exclude_unset=True).items():
+            setattr(record, key, value)
+
+    db.commit()
+    return records
+
+
+

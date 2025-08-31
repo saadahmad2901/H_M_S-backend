@@ -18,8 +18,8 @@ def create_visit_service(visit_service:schemas.VisitServiceCreate,db:Session = D
     return APIResponse(data=data, message="Visit service created successfully")
 
 @router.get("/", response_model=APIResponse[Page[schemas.VisitService]])
-def get_visit_services(visit_id:Optional[int]=None, db:Session = Depends(get_db), params: Params = Depends()):
-    data = services.get_visit_services(visit_id,db) 
+def get_visit_services(visit_id:Optional[int]=None,paid_status:Optional[str]=None,bill_no:Optional[str]=None, db:Session = Depends(get_db), params: Params = Depends()):
+    data = services.get_visit_services(visit_id,paid_status,bill_no,db)
     if data is None:
         paginated_empty = paginate([], params)
         return APIResponse(data=paginated_empty, message="Visit services not found")
@@ -47,4 +47,14 @@ def delete_visit_service(id:int,db:Session = Depends(get_db)):
         raise HTTPException(status_code=400, detail="Visit service deletion failed")
     return APIResponse(data=data, message="Visit service deleted successfully")
 
+@router.put("/is_billed/{visit_id}", response_model=APIResponse[List[schemas.UpdateUserVisitServiceBillNo]])
+def update_isbilled_billno(
+    visit_id: int,
+    update_schema: schemas.UpdateUserVisitServiceBillNo,
+    db: Session = Depends(get_db)
+):
+    data = services.update_isbilled_billno(visit_id, update_schema, db)
+    if not data:
+        raise HTTPException(status_code=400, detail="Billed update failed")
+    return APIResponse(data=data, message="Billed update successful")
 

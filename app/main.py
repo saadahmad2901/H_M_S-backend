@@ -6,7 +6,7 @@ from app.core import custom_exception_handler
 from fastapi.exceptions import RequestValidationError
 from sqlalchemy.exc import IntegrityError
 from starlette.exceptions import HTTPException as StarletteHTTPException
-from app.routes import patient_router, doctor_router, appointment_router,dropdown_router,visit_router,service_router,visit_service_router,user_router
+from app.routes import patient_router, doctor_router, appointment_router,dropdown_router,visit_router,service_router,visit_service_router,user_router,profile_photo_router,department_router,bill_info_router
 from fastapi_pagination import add_pagination
 
 # Create the FastAPI app instance
@@ -18,7 +18,9 @@ app = FastAPI(
 add_pagination(app)
 
 origins = [
-    "http://localhost:3000",  # Adjust this to your frontend URL
+    "http://localhost:3000",
+    "https://hms-frontend-five.vercel.app"
+   
 ]
 # Add CORS middleware
 app.add_middleware(
@@ -32,10 +34,17 @@ app.add_middleware(
 app.include_router(user_router, prefix=settings.API_V1_STR)
 app.include_router(patient_router, prefix=settings.API_V1_STR)
 app.include_router(doctor_router, prefix=settings.API_V1_STR)
+app.include_router(department_router, prefix=settings.API_V1_STR)
+
+
+app.include_router(profile_photo_router, prefix=settings.API_V1_STR)
 app.include_router(appointment_router, prefix=settings.API_V1_STR)
 app.include_router(visit_router, prefix=settings.API_V1_STR)
 app.include_router(service_router, prefix=settings.API_V1_STR)
 app.include_router(visit_service_router, prefix=settings.API_V1_STR)
+
+app.include_router(bill_info_router, prefix=settings.API_V1_STR)
+
 app.include_router(dropdown_router, prefix=settings.API_V1_STR)
 
 

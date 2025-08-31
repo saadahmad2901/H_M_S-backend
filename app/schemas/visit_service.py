@@ -24,4 +24,8 @@ class VisitService(VisitServiceBase):
     class Config:
         orm_mode=True
 
+class UpdateUserVisitServiceBillNo(BaseModel):
+    is_billed: bool
+    purchased_billed_id: str | None = None
+
 

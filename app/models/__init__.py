@@ -6,3 +6,4 @@ from .visit import *
 from .services import *
 from .visit_service import *
 from  .user import *
+from .bill_info import *

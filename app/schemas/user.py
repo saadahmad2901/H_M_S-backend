@@ -33,6 +33,7 @@ class UserLogin(BaseModel):
     password: str
 
 class UserUpdatePassword(BaseModel):
+    email: str
     password: str
 
 class UserUpdateStatus(BaseModel):

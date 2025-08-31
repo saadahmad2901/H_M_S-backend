@@ -8,11 +8,11 @@ class Patient(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, nullable=False)
-    dob = Column(Date, nullable=False)
+    dob = Column(Date, nullable=True) 
     gender = Column(String, nullable=False)
     cnic = Column(String(15), unique=True, nullable=False)
     contact_number = Column(String, nullable=False)
-    emergency_contact_number = Column(String, nullable=False)
+    emergency_contact_number = Column(String, nullable=True)
     email = Column(String, nullable=True)
     address = Column(String, nullable=True)
     occupation = Column(String, nullable=True)

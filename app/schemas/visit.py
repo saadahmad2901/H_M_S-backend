@@ -24,16 +24,15 @@ class Visit(VisitBase):
 
 class VisitCreate(BaseModel):
     appointment_id: Optional[int] = None
-    patient_id: Optional[int]
-    check_out_time: Optional[datetime] = None
+    patient_id: Optional[int] = None
     check_in_time: Optional[datetime] = None
+    doctor_id: Optional[int] = None
+    visit_status: Optional[str] = None
+    reason_for_visit: Optional[str] = None
+    vitals: Optional[str] = None
+    diagnosis: Optional[str] = None
+    notes: Optional[str] = None
 
-    doctor_id: Optional[int]
-    visit_status: Optional[str]
-    reason_for_visit: Optional[str]
-    vitals: Optional[str]
-    diagnosis: Optional[str]
-    notes: Optional[str]
 
 
 
@@ -47,6 +46,7 @@ class VisitUpdate(BaseModel):
 class UpdateVisitStatus(BaseModel):
     visit_status: Optional[str]
     follow_up_date: Optional[date] = None
+    check_out_time: Optional[datetime] = None
 
 
 

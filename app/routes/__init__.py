@@ -6,3 +6,6 @@ from .services import router as service_router
 from .visit_service import router as visit_service_router
 from .dropdown import router as dropdown_router
 from .user import router as user_router
+from .profile_photo import router as profile_photo_router
+from .department import router as department_router
+from .bill_info import router as bill_info_router

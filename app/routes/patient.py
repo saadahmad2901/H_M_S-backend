@@ -87,3 +87,13 @@ async def read_patients(
     if not data:
         return APIResponse(data=paginate([],params), message="Patients Not Found")
     return APIResponse(data=paginate(data,params), message="Patients retrieved successfully")
+
+@router.post("/patients-appointment/add-by-bot", response_model=APIResponse[schemas.PatientAndAppointmentWithBot])
+async def create_patients_and_appointment_endpoint(
+    schema: schemas.PatientAndAppointmentWithBot,
+    db: Session = Depends(get_db)
+):
+    data = services.create_patients_and_appointment(db=db, schema=schema)
+    if not data:
+        raise HTTPException(status_code=400, detail="patients_and_appointment creation failed")
+    return APIResponse(data=data, message="patients_and_appointment created successfully")

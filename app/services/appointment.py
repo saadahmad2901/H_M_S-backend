@@ -4,6 +4,8 @@ from app.models import Patient, Department, Doctor
 from app.models.appointment import Appointment, StatusEnum
 from typing import List, Optional
 from fastapi import HTTPException
+from sqlalchemy import desc  # Make sure to import this
+
 
 # If you add schemas/appointment.py later, update the type hints accordingly
 
@@ -42,6 +44,7 @@ def get_appointment(db: Session, appointment_id: int) -> Optional[dict]:
         "doctor_name": doctor_name
     }
 
+
 def get_appointments(
     db: Session,
     patient_id: Optional[int] = None,
@@ -60,16 +63,20 @@ def get_appointments(
     if status is not None:
         query = query.filter(Appointment.status == status)
 
+    # 👇 Order by Appointment.id in descending order
+    query = query.order_by(desc(Appointment.id))
+
     results = []
     for appointment, patient_name, department_name, doctor_name in query.all():
         results.append({
-            "appointment": appointment,  # You can serialize this if needed
+            "appointment": appointment,
             "patient_name": patient_name,
             "department_name": department_name,
             "doctor_name": doctor_name
         })
 
     return results
+
 
 
 def update_appointment(db: Session, appointment_id: int, update_data: dict) -> Optional[Appointment]:

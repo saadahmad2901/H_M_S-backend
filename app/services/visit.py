@@ -1,9 +1,12 @@
+from datetime import datetime
 from typing import List, Optional
 
 from sqlalchemy.orm import Session
 from app import schemas
 from app.models import Appointment, Patient, Doctor
 from app.models.visit import Visit
+from app.schemas import UpdateVisitStatus
+
 
 def create_visit(db: Session, visit: schemas.VisitCreate) -> schemas.Visit:
     db_visit = Visit(**visit.dict())
@@ -85,11 +88,17 @@ def update_visit(id: int, visit: schemas.VisitUpdate, db: Session) -> Optional[V
     db.refresh(db_visit)
     return db_visit
 
-def update_visit_status(id: int, visit: schemas.UpdateVisitStatus, db: Session) -> Optional[Visit]:
+def update_visit_status(id: int, visit: UpdateVisitStatus, db: Session) -> Optional[Visit]:
     db_visit = db.query(Visit).filter(Visit.id == id).first()
     if not db_visit:
         return None
-    for key, value in visit.dict(exclude_unset=True).items():
+
+    visit_data = visit.dict(exclude_unset=True)
+
+    if 'check_out_time' not in visit_data or visit_data['check_out_time'] is None:
+        visit_data['check_out_time'] = datetime.utcnow()
+
+    for key, value in visit_data.items():
         setattr(db_visit, key, value)
 
     db.commit()

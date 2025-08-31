@@ -11,4 +11,3 @@ class Department(Base):
     description = Column(String(255), nullable=True)
     appointments = relationship("Appointment", back_populates="department")
     doctors = relationship("Doctor", back_populates="department")
- 

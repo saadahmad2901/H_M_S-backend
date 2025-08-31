@@ -45,19 +45,19 @@ class Appointment(Base):
 
     id = Column(Integer, primary_key=True, index=True)
 
-    patient_id = Column(Integer, ForeignKey("patients.id"), nullable=False)
-    department_id = Column(Integer, ForeignKey("departments.id"), nullable=False)
-    doctor_id = Column(Integer, ForeignKey("doctors.id"), nullable=False)
+    patient_id = Column(Integer, ForeignKey("patients.id"), nullable=True)
+    department_id = Column(Integer, ForeignKey("departments.id"), nullable=True)
+    doctor_id = Column(Integer, ForeignKey("doctors.id"), nullable=True)
 
     date = Column(Date, nullable=False)
     time = Column(Time, nullable=False)
 
-    reason_for_visit = Column(Text, nullable=False)
-    appointment_type = Column(Enum(AppointmentTypeEnum), nullable=False)
-    status = Column(Enum(StatusEnum), nullable=False, default=StatusEnum.pending)
+    reason_for_visit = Column(Text, nullable=True)
+    appointment_type = Column(Enum(AppointmentTypeEnum), nullable=True)
+    status = Column(Enum(StatusEnum), nullable=True, default=StatusEnum.pending)
 
     doctor_fee = Column(Float, nullable=True)
-    payment_status = Column(Enum(PaymentStatusEnum), nullable=False, default=PaymentStatusEnum.unpaid)
+    payment_status = Column(Enum(PaymentStatusEnum), nullable=True, default=PaymentStatusEnum.unpaid)
     payment_method = Column(Enum(PaymentMethodEnum), nullable=True)
 
     remarks = Column(Text, nullable=True)
